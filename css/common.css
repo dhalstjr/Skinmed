@@ -1,0 +1,1432 @@
+@charset 'utf-8';
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: inherit;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+:root {
+  font-size: 62.5%; /* 10px */
+
+  --main-color: #0a31a8;
+  --white-color: #ffffff;
+}
+
+button {
+  background: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  vertical-align: top;
+  /*   width: 100%; */
+  /*   max-width: 100%; */
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  /* 폰트 적용  */
+  font-family: "Pretendard", sans-serif;
+}
+
+input {
+  list-style: none;
+  /* 체크 박스 사라지게 됨 */
+  -webkit-appearance: none; /* 기본 스타일 제거 */
+  -moz-appearance: none; /* 기본 스타일 제거 */
+  appearance: none; /* 기본 스타일 제거 */
+
+  /* input 태그 클릭 시에 테두리 삭제 */
+  outline-style: none;
+}
+
+.hidden {
+  position: absolute;
+  margin: -1px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.ellipsis {
+  -webkit-line-clamp: 4;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+
+  display: -webkit-box;
+
+  word-break: keep-all;
+}
+
+.ellipsis2 {
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+
+  word-break: keep-all;
+}
+
+/* 애니메이션 (스크롤) */
+@keyframes scroll-down-box-animation-arrow {
+  0% {
+    transform: translateY(-0.5rem);
+  }
+  50% {
+    transform: translateY(0.5rem);
+  }
+  100% {
+    transform: translateY(-0.5rem);
+  }
+}
+
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  margin: 0 var(--swiper-pagination-bullet-horizontal-gap, 4px);
+}
+
+/*  공통 CSS 들어가기 */
+body {
+  line-height: 1.7;
+}
+
+/* header에 대한 CSS */
+/* header에 스타일 fixed */
+#header {
+  position: fixed;
+  top: 0;
+  /* left 0과 right : 0을 줘도 width : 100% 와 같은 동작을 하지만 width : 100%를 준 이유가 있을거임.*/
+  left: 0;
+  right: 0;
+
+  width: 100%;
+
+  font-size: 1.8rem;
+
+  z-index: 1000;
+}
+
+/* 헤더의 넓이를 선정. */
+#header .in-header {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  /* 높이 지정 */
+  height: 9rem;
+
+  padding: 0 0 0 5rem;
+
+  background-color: #fff;
+}
+
+.logo-box {
+  margin-right: 20rem;
+}
+
+.logo-box .logo {
+  width: 19rem;
+  height: 3.3rem;
+
+  display: block;
+
+  background: url(../img/logo.png) no-repeat 50% / cover;
+}
+
+#header #nav {
+  height: 100%;
+
+  /* 절대 요소로 만들고 가운데 맞춤. */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 50;
+}
+
+#nav .depth1 {
+  display: flex;
+
+  align-items: center;
+
+  /* 높이를 100%로 주지 않는다면, 크기가 작아서 헤더 위에 정렬하게 된다. */
+  height: 100%;
+}
+
+#nav > .depth1 > li {
+  /* 절대요소의 부모가 되어 서브메뉴의 부모가 된다. */
+  position: relative;
+
+  white-space: nowrap;
+
+  /* li에 크기를 주고 a태그도 100%를 줄 수 있도록 100%를 준다. a태그의 크기를 키워 마우스가 들어갈 수 있는 영역을 키움. */
+  height: 100%;
+  padding: 0 3.6rem;
+
+  transition: padding 0.3s;
+}
+
+#nav > .depth1 > li > a {
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+
+  font-size: 1.8rem;
+
+  font-weight: 400;
+}
+
+#nav > .depth1 > li > a > span {
+  /* 텍스트 요소에 부모 요소가 되게 하고, hover시 나오는 효과를 주기 위해서 부모 요소로 적용. */
+  position: relative;
+
+  /* line-height를 줘 가상요소 효과가 텍스트와 너무 붙지 않게 함. */
+  line-height: 1.7;
+}
+
+#nav > .depth1 > li > a > span:before {
+  content: "";
+  display: block;
+
+  position: absolute;
+
+  /* 이 요소들의 위치들은 가운데에서 퍼지는 효과를 주기 위해서 이렇게 설정. */
+  bottom: 0;
+  left: 50%;
+
+  transform: translate(-50%, 100%);
+
+  width: 0;
+
+  border-top: 1.5px solid #0c3659;
+
+  transition: width 0.3s;
+}
+
+#nav > .depth1 > li > a:hover > span:before {
+  width: 100%;
+}
+
+.utils {
+  /* 유틸메뉴의 정렬은 오른쪽에 붙여서 헤더의 레이아웃을 구성 */
+  display: flex;
+  /*  유틸메뉴의 구성인 자식들이 가운데 정렬 */
+  align-items: center;
+
+  /*  크기를 100%로 줘 헤더의 크기에 맞게 크기를 가져감 */
+  height: 100%;
+
+  /* 오른쪽 끝으로 붙임. */
+  margin-left: auto;
+}
+
+.utils .utils_btn_common {
+  position: relative;
+  display: flex;
+
+  align-items: center;
+
+  /* 크기  */
+  width: 2.25rem;
+  height: 100%;
+
+  font-size: 2.25rem;
+}
+
+.utils .utils_btn_common span {
+  display: block;
+}
+
+/* 본페이지에서는 유틸메뉴의 아이콘들이 svg로 선으로 구성 되어있으나, 나는 이미지로 구성 */
+
+.utils .utils_btn_common + .utils_btn_common {
+  margin-left: 3.6rem;
+}
+
+.utils .info-btn {
+  width: auto;
+}
+
+.utils .info-btn .info {
+  padding: 0.4rem 1.56rem;
+  border: 1px solid #0c3659;
+
+  border-radius: 2.6rem;
+
+  color: #0c3659;
+
+  font-size: 1.4rem;
+
+  font-weight: 500;
+
+  /* 줄바꿈 일어나지 않게. */
+  white-space: nowrap;
+
+  transition: all 0.3s;
+}
+
+/* hover시 효과 */
+.utils .info-btn .info:hover {
+  background-color: #0c3659;
+  color: #fff;
+}
+
+/* 유틸매뉴의 로그인  */
+.utils .login-box .login {
+  background: url(../img/login-icon.svg) no-repeat 0 0 / contain;
+
+  width: 2.25rem;
+  height: 2.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.utils .login-box .login-toll {
+  display: none;
+}
+
+/* 유틸메뉴의 검색 */
+.utils .search-box .search {
+  background: url(../img/search-icon.svg) no-repeat 0 0 / contain;
+  width: 2.25rem;
+  height: 2.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
+/* 유틸메뉴의 햄버거 메뉴 */
+.utils .ham-box {
+  /* 박스 크기 안 가운데 정렬 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 9rem;
+
+  background: #0a2e4d;
+}
+
+.utils .ham-box .ham-btn {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  /* 세로로 간격을 주기 위해서는 columns가 필요 */
+  flex-direction: column;
+
+  /* 라인의 부모 요소에 크기를 주고, 자식에게 100%를 준다. */
+  position: relative;
+
+  width: 2.25rem;
+  height: 1.8rem;
+}
+
+.utils .ham-box .ham-btn span {
+  display: block;
+}
+
+.utils .ham-box .ham-btn .line {
+  width: 100%;
+  height: 1px;
+
+  border-top: 1.5px solid #fff;
+
+  /* 여기서 height와 border-top을 함께 사용한 이유는 기능적으로는 한개만 사용해도 되지만, 디자인적으로는 border로 선을 그리고, height로 높이를 제어하는 방식이 라인을 얇지만 선명하게 만들 수 있어 같이 쓰는 경우가 많다 */
+  /* 1. 라인 두께 조절, 2. 레이아윳의 안정성, 3.시각적 대비 강회 */
+  background: #fff;
+
+  transition: width 0.5s;
+}
+
+.utils .ham-box:hover .ham-btn .line {
+  width: 80%;
+}
+
+/* line의 2번째 요소에게 넓이의 차이를 줘 디자인 적 요소 추가 */
+.utils .ham-box .ham-btn .line:nth-of-type(2) {
+  width: 80%;
+}
+
+.utils .ham-box:hover .ham-btn .line:nth-of-type(2) {
+  width: 100%;
+}
+
+/* 퀵메뉴 맵 : fixed로 만들기 -> 왼쪽 끝에 븉게 헤더와 같이 연결되어 있는 듯한 */
+.quick_wrap {
+  position: fixed;
+  /* 오른쪽 끝에 붙임 -> 그리고 top값은 header의 높이에 맞게 */
+  top: 8.8rem;
+  right: 0;
+
+  /* 100vh에서 헤더 크기 값을 빼줘야 메인 화면 넓이에 다 들어온다. */
+  height: calc(100vh - 90px);
+
+  background-color: #0a2e4d;
+  z-index: 999;
+
+  /* 자식들이 아래로 내려가게 하기 위해서 columns를 주고, flex-end를 줘서 끝으로 이동하게 함. */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  width: 9rem;
+
+  color: #fff;
+}
+
+.quick_wrap .quick_menu {
+}
+
+.quick_wrap .quick_menu .box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  padding: 1.26rem 0.9rem;
+
+  font-size: 1.3rem;
+
+  font-weight: 400;
+}
+
+.quick_wrap .quick_menu .box .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: auto;
+  fill: #fff;
+}
+
+.quick_wrap .quick_menu .box .icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  max-width: 100%;
+}
+
+.quick_wrap .quick_menu .box .title {
+  position: relative;
+  margin-top: 1.3rem;
+  white-space: nowrap;
+
+  line-height: 1.7;
+}
+
+.quick_wrap .quick_menu .box .title:before {
+  content: "";
+  position: absolute;
+
+  bottom: -1px;
+  left: 50%;
+  transform: translate(-50%, 100%);
+
+  display: block;
+  width: 0;
+  height: 1px;
+
+  background-color: #9a9ea7;
+
+  transition: width 0.5s;
+}
+
+/* 박스 메뉴에 hover시에 생겨야하기 때문에 box뒤에다가 hover를 붙여줬음. */
+.quick_wrap .quick_menu .box:hover .title:before {
+  width: 100%;
+}
+
+.mo_only {
+  display: none !important;
+}
+
+/* top 버튼 */
+.quick_wrap .top-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 9rem;
+  height: 9rem;
+
+  cursor: pointer;
+  fill: #fff;
+
+  background-color: #65a9df;
+}
+
+.quick_wrap .top-btn .icon {
+  width: 2.3rem;
+  height: 3rem;
+
+  background: url(../img/top-cion.svg) no-repeat 0 0 / contain;
+}
+
+.mo-only {
+  display: none;
+}
+
+/* 검색창 모달 -> 일단 보이지 않게 설정. */
+#headerSearch {
+}
+
+#headerSearch .all-sch {
+  position: fixed;
+  top: 90px; /*  헤더 크기 뺴주기 */
+  left: 0;
+
+  z-index: 50;
+  width: 100%;
+  height: 25.2rem;
+  background-color: #0c3659;
+
+  /* on 클레스 붙기 전 상태 */
+  opacity: 0;
+  visibility: visible;
+  pointer-events: none;
+
+  /* 그리드로 레이아웃 배치 */
+  display: grid;
+  /* grid-template-columns 명령에 대해서 */
+  /* 그리드 열을 2개 만든다. 1열은 minmax(0,1fr) : 유동 폭(남는 공간을 먹는 열) / 2열은 max-content: 컨텐츠가 필요로 하는 만큼만 넓어지는 열 */
+  /* 그래서 2열 레이아웃이 형성되고, 아이템들이 자동으로 행을 늘려가며 채워짐 그리고 행은 내가 지정해주지 않으면 아이템 수에 맞춰 자동 생성. */
+  /* 1열 :  1fr은 남는 공간을 분배받는 단위 , minmax(0...)를 쓰면  콘텐츠가 넘칠 때도 0까지 줄어들 수 있어서 긴 단어/긴 인풋 대문에 레이아웃이 밀리는 현상을 막아준다. (보통 1fr만 사용하면 콘텐츠의 min-content 크기 때문에 넘침이 생길 수 있다. */
+  /* 2열 : max-content는 그 열의 폭을 자식 콘텐츠의 최대 자연 너비로 맞춤. 닫기 버튼처럼 폭이 작은 요소면 딱 그만큼만 차지. (콘텐츠가 길어지면 그 길이만큼 넓어지므로, 너무 길어질 수 있다는 점을 주의.) */
+  grid-template-columns: minmax(0, 1fr) max-content;
+
+  /* grid를 설정했더니 좌우가 붙어서 padding으로 간격을 줌. */
+  padding: 0 2rem;
+
+  align-items: center;
+  justify-content: center;
+
+  align-content: center;
+  justify-items: center;
+
+  /* 클릭 시 부드러운 구현을 위해서 */
+  transition: opacity 0.3s;
+}
+
+#headerSearch .all-sch.on {
+  opacity: 1;
+  visibility: inherit;
+  pointer-events: auto;
+}
+
+#headerSearch .all-sch .search-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 54rem;
+  height: 5.4rem;
+  padding: 0 2.1rem;
+
+  /* height와 같은 크기를 주어 height가 사라져도 높이는 line-height와 같은 값을 나타냄. */
+  /*   line-height: 5.4rem; */
+
+  background-color: #fff;
+  border-radius: 3rem;
+}
+
+#headerSearch .all-sch .search-box input {
+  width: 100%;
+  font-size: 1.8rem;
+}
+
+#headerSearch .all-sch .search-box .search-icon button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2rem;
+  height: 2rem;
+
+  background: url(../img/search-icon-bold.svg) no-repeat 0 0 / contain;
+}
+
+#headerSearch .all-sch .close-btn {
+  width: 3.2rem;
+  height: 3.2rem;
+  opacity: 0.6;
+
+  background: url(../img/close-icon_white.svg) no-repeat 0 0 / contain;
+}
+
+#headerSearch .all-sch .tag-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1rem;
+
+  margin-top: 2.8rem;
+}
+
+#headerSearch .all-sch .tag-wrap .tag-box {
+  display: flex;
+  gap: 0.8rem;
+}
+
+#headerSearch .all-sch .tag-wrap .tag-box .tag {
+  white-space: nowrap;
+  padding: 0.45rem 1.4rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2.6rem;
+
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+
+  transition: background-color 0.3s;
+}
+
+#headerSearch .all-sch .tag-wrap .tag-box .tag:hover {
+  background-color: #65a9df;
+}
+
+/* 서브메뉴 CSS. */
+#nav > .depth1 > li > .depth2 {
+  position: absolute;
+
+  /* 기준 요소가 depth1 > li가 relative이므로, 그 자식 depth2의 절대 위치 기준이 되기에,  */
+  /* bottom + translateY(100%) -> bottom 0은 서브메뉴의 아래쪽을 부모 li의 아래쪽에 맞춥니다.  */
+  /* 여기에 translateY(100%)(자기 자신의 높이의 100%만큼 아래로 이동)를 더하면, 서브메뉴의 윗변이 부모의 아랫변과 정확히 맞닿아 바로 아래에 위치하게 됩니다. */
+  /* 결과적으로 top : 100%와 같은 효과를 만들어낸다. */
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 100%);
+
+  /* 서브메뉴의 최소폭을 부모 li 폭과 같게 보장. */
+  min-width: 100%;
+  text-align: center;
+
+  background-color: #0c3659;
+
+  padding: 3.6rem 2.6rem;
+
+  transition: opacity 0.3s;
+  z-index: 10;
+
+  /* 가려진 상태에서 */
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#nav > .depth1 > li > .depth2.on {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#nav > .depth1 > li > .depth2 > li {
+  line-height: 2.2;
+}
+
+#nav > .depth1 > li > .depth2 > li > a {
+  position: relative;
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.7);
+
+  transition: color 0.3s;
+}
+
+#nav > .depth1 > li > .depth2 > li > a:hover {
+  color: #fff;
+}
+
+#nav > .depth1 > li > .depth2 > li > a > span:before {
+  content: "";
+  display: block;
+
+  position: absolute;
+  left: -1.3rem;
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+
+  background-color: #fff;
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity 0.3s ease-in-out;
+}
+
+#nav > .depth1 > li > .depth2 > li > a:hover > span:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 헤더에 header_down 클래스가 부여됐을 떄  */
+#header.header_down {
+  /* 헤더의 영역이라는 걸 알기 위해서 그림자 효과 구현 */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* 사이트 맵 CSS */
+.site-map {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 1000;
+
+  font-size: 1.8rem;
+
+  background-color: rgba(5, 51, 100, 0.9);
+  /* 요소 뒤에 있는 영역에 블러(흐림), 색상 변경 등 시각적 필터 효과를 적용하는 CSS */
+  backdrop-filter: blur(20px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+
+  /* 클래스를 부여할 때 부드러운 효과 */
+  transition: opacity 0.6s;
+}
+
+.site-map.on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.site-map .util-wrap {
+  display: flex;
+  display: none;
+}
+
+.site-map .cls-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 6.4rem;
+  height: 6.4rem;
+  border-radius: 100%;
+
+  border: 2px solid #fff;
+
+  cursor: pointer;
+
+  position: absolute;
+  top: 3vw;
+  right: 4vw;
+
+  transition: background-color 0.5s;
+}
+.site-map .cls-btn .cls-icon {
+  width: 2.8rem;
+  height: 2.8rem;
+
+  opacity: 0.8;
+
+  background: url(../img/close-icon_white.svg) no-repeat 0 0 / contain;
+
+  transition: background 0.3s;
+}
+
+.site-map .cls-btn:hover .cls-icon {
+  background: url(../img/close-icon_color.svg) no-repeat 0 0 / contain;
+}
+
+.site-map .cls-btn:hover {
+  background-color: #fff;
+}
+
+.site-map .cls-btn .line-box {
+  width: 2.4em;
+  height: 3.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-map .site-cont {
+  color: #fff;
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  /* 크기를 줘 간격을 서로 동일하게 가지게. */
+  width: 80%;
+  /* 가운데 정렬 */
+  margin: 0 auto;
+}
+
+.site-map .site-cont .box {
+}
+
+.site-map .site-cont .box > .depth1 {
+  position: relative;
+  margin-bottom: 4.3rem;
+  font-size: 2.7rem;
+  font-weight: 700;
+}
+.site-map .site-cont .box > .depth1:hover:before {
+  opacity: 1;
+  /* 그리고 hover에 translateY의 위치를 바꿔주면 효과를 제대로 보여줄 수 있다.  */
+  transform: translateY(0);
+}
+
+.site-map .site-cont .box > .depth1:before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 0;
+
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background-color: #65a9df;
+
+  opacity: 0;
+
+  /* 여기서 transform에 translate를 넣어 효과를 준다.(위에서 떨어지는 효과) */
+  transform: translateY(-100%);
+
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.site-map .site-cont .box .depth2 {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+.site-map .site-cont .box.is-open > .depth2 {
+  max-height: var(--h, 0px);
+}
+
+.site-map .site-cont .box .depth2 > li {
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.6s;
+}
+
+.site-map .site-cont .box .depth2 > li:hover {
+  color: #fff;
+}
+
+.site-map .site-cont .box .depth2 > li > a {
+  position: relative;
+  display: inline-block;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.site-map .site-cont .box .depth2 > li > a > span {
+  position: relative;
+}
+
+/* 사이트 맵 같은 경우에는 내부 스크롤이 사용되면 안되기 때문에 클래스를 부여해서 스크롤을 차단해준다. */
+html.scroll_none {
+  overflow: hidden;
+}
+
+/* 모달 로그인 창 */
+.modal {
+  /* 로그인 창이 떴을 때 로그인 창 빼고 어둡게 하기 위한 태그 */
+  display: block;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 9999;
+
+  background: rgba(0, 0, 0, 0.7);
+
+  padding: 7.2rem 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s;
+
+  /* 클래스 부여하기 전 상태 */
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal.open {
+  opacity: 1;
+  pointer-events: inherit;
+}
+
+/* display : table / table-cell을 이용한 세로 가운데 정렬 패턴 */
+/* 근데 왜 table/table-cell을 사용했을까? - Flexbox가 나오기 전에는 세로 가운데 정렬이 까다로웠다. */
+/* 그 때 표준적으로 많이 사용한 css는 부모 -  display : table , height : 100% , 자식 - display :  table-cell , vertical-align : middle 이 조합이다.  */
+/* 오늘 날엔 Flex나 Grid가 더 간단하지만, 레거시 호환/익숙한 패턴 때문에 여전히 보이곤 한다.  */
+
+/* 언제 사용하면 좋은지? */
+/* 1. 아주 구형 브라우저 지원이 꼭 필요할 때. */
+/* 2. 간단한 세로 갸운데 정렬을 래핑/트랜스 폼 없이 해야할 때 */
+/* 언제 피하는 게 좋은가? */
+/* 1.복잡한 반응형/재배치/정렬(가로 세로 동시 중앙, 줄바꿈, 재정렬 등) */
+.modal .modal-wrap {
+  display: table;
+  table-layout: fixed;
+  vertical-align: middle;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+  padding: 0 2rem;
+}
+
+.modal .modal-wrap .scroll-box {
+  /* 세로 가운데 정렬 담당 */
+  display: table-cell;
+  vertical-align: middle; /* 세로 가운데 정렬의 핵심 */
+}
+
+/* 내부 스크롤을 막기 위한 html태그에 overflow :  hidden  */
+html.scroll-none {
+  overflow: hidden;
+}
+
+/* 가로 가운데 정렬 */
+.modal .modal-wrap .scroll-box .modal-container {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto; /* 가로 가운데 정렬 */
+}
+
+.modal .modal-wrap .scroll-box .modal-container.login {
+  width: 54rem;
+  background: none;
+}
+
+.modal .modal-wrap .scroll-box .modal-container .modal-close-btn {
+  position: absolute;
+  top: 2.8rem;
+  right: 2.8rem;
+
+  width: 2.8rem;
+  height: 2.8rem;
+
+  background: url(../img/close-icon_black.svg) no-repeat center;
+  background-size: 2.2rem;
+
+  z-index: 2;
+
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.modal .modal-wrap .scroll-box .modal-container .modal-close-btn:hover {
+  /* 아이콘이 회전하는 느낌 */
+  transform: rotate(180deg);
+}
+
+.modal .modal-wrap .scroll-box .modal-container .login-wrap {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 7.2rem 5.4rem;
+}
+
+.modal .modal-wrap .scroll-box .modal-container .login-wrap .tit {
+  text-align: center;
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+
+.modal .modal-wrap .scroll-box .modal-container .login-wrap .input-wrap {
+  margin-top: 5.1rem;
+}
+
+.modal .modal-wrap .scroll-box .modal-container .login-wrap .input-wrap input {
+  width: 100%;
+  height: 5.2rem;
+
+  /* 아이콘이 있을 공간까지 여유있게. */
+  padding-left: 4.2rem;
+
+  /* 수직으로 세로 정렬하기 위해서 line-height를 height 크기 만큼 준다. */
+  line-height: 5.2rem;
+
+  font-size: 1.7rem;
+  border: 1px solid #bcbfc7;
+  border-radius: 0.7rem;
+
+  margin-bottom: 1.2rem;
+}
+
+.modal .modal-wrap .scroll-box .modal-container .login-wrap .input-wrap .inp {
+  /* 아이콘이 제대로 배치될 수 있도록 */
+  position: relative;
+}
+.modal .modal-wrap .scroll-box .modal-container .input-wrap .inp .icon {
+  position: absolute;
+  /* 중간으로 맞춰주기 */
+  top: calc(50% - 1.6rem);
+  /*   transform: translateY(-50%); */
+  /* 완쪽 공간 여유 두기 */
+  left: 1.4rem;
+
+  display: block;
+}
+
+.modal .modal-wrap .scroll-box .modal-container .input-wrap .inp .icon img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+}
+
+.modal .modal-wrap .scroll-box .modal-container .input-wrap button {
+  width: 100%;
+
+  background-color: #232323;
+  color: #fff;
+  font-weight: 700;
+  margin-top: 2.6rem;
+
+  /* font-size와 line-height를 같게 한 이유는 단일 행 텍스트를 세로로 딱 맞게 한다.  */
+  /* 글자 위 아래 기본 여백(padding)이 거의 없어져 텍스트 박스가 "글자 높이만큼" 된다. 그리고 텍스트 1줄일 때만 깔끔하다.  */
+  font-size: 1.7rem;
+  line-height: 1.7rem;
+
+  padding: 2.1rem 0;
+  border-radius: 0.7rem;
+  text-align: center;
+}
+
+.modal .modal-wrap .scroll-box .modal-container .util-wrap {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 2rem;
+}
+
+.modal .modal-wrap .scroll-box .modal-container .util-wrap a {
+  position: relative;
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  font-weight: 500;
+
+  color: #9a9ea7;
+
+  transition: color 0.3s;
+}
+
+.modal .modal-wrap .scroll-box .modal-container .util-wrap a + a {
+  padding-left: 1.6rem;
+  margin-left: 1.6rem;
+  border-left: 1px solid rgba(188, 191, 199, 0.5);
+}
+
+.modal .modal-wrap .scroll-box .modal-container .util-wrap a:hover {
+  color: #232323;
+}
+
+.modal .modal-wrap .scroll-box .modal-container .sns-login {
+  display: flex;
+  margin-top: 7.2rem;
+}
+
+.modal .modal-wrap .scroll-box .modal-container .sns-login a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1.4rem 2.8rem;
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+
+  width: 100%;
+  border: 1px solid #bcbfc7;
+  border-radius: 2.8rem;
+
+  transition: border-color 0.3s;
+}
+
+.modal .modal-wrap .scroll-box .modal-container .sns-login a:hover {
+  border: 1px solid #232323;
+}
+
+.modal .modal-wrap .scroll-box .modal-container .sns-login a + a {
+  margin-left: 1.6rem;
+}
+
+.modal .modal-wrap .scroll-box .modal-container .sns-login a .icon {
+  margin-right: 1.4rem;
+}
+.modal .modal-wrap .scroll-box .modal-container .sns-login a .icon img {
+  width: 2.4rem;
+  height: 2.4rem;
+  object-fit: contain;
+
+  max-width: 100%;
+}
+
+/* footer - start */
+#footer {
+  padding-bottom: 5.4rem;
+  background-color: #f7f7f8;
+  color: #636366;
+}
+
+#footer .footer-container {
+}
+
+/* grid 설정 */
+#footer .footer-container .footer-cont {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-content: space-between;
+
+  /* 오른쪽 퀵메뉴 크기를 뺴야한다.  */
+  margin-right: calc(9rem - 1px);
+}
+
+#footer .footer-container .footer-cont .branch-box {
+  width: 100%;
+  padding: 6.3rem;
+
+  color: #fff;
+}
+
+#footer .footer-container .footer-cont .branch-box:nth-of-type(1) {
+  /* 사진 정렬을 오른쪽으로 */
+  background: url(../img/foot-bg1.png) no-repeat right / cover;
+}
+
+#footer .footer-container .footer-cont .branch-box:nth-of-type(2) {
+  background: url(../img/foot-bg2.png) no-repeat right / cover;
+}
+
+#footer .footer-container .footer-cont .branch-box:nth-of-type(3) {
+  background: url(../img/foot-bg3.png) no-repeat right / cover;
+}
+
+#footer .branch-box .branch-address {
+  display: flex;
+  flex-direction: column;
+}
+
+#footer .branch-box .branch-address .txt {
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+
+  margin-top: 1rem;
+}
+
+#footer .branch-box .branch-address .tit {
+  font-size: 2.7rem;
+  font-weight: 700;
+
+  color: #fff;
+}
+
+#footer .branch-box .branch-address .operating-hours {
+  margin-top: 3.6rem;
+}
+
+#footer .branch-box .branch-address .operating-hours .info .medium {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* grid로 설정해서 텍스트 간격 맞추기 */
+
+#footer .branch-box .branch-address .operating-hours .info {
+  font-size: 1.4rem;
+  display: grid;
+  /* 한 열은 7.2rem으로 고정하고, 다른 한쪽은 남은 공간을 차지하게 1fr을 설정. */
+  /* minmax(0,1fr) -> 남은 공간을 모두 쓰는 유연 칼럼인데, 최소를 0으로 잡아 긴 내용이 와도 줄어들 수 있게 한 안전한 설정. */
+
+  grid-template-columns: 7.2rem minmax(0, 1fr);
+  align-items: center;
+
+  gap: 1rem;
+
+  margin-top: 1rem;
+}
+
+#footer .branch-box .branch-address .operating-hours .info span {
+  font-weight: 600;
+
+  color: rgba(255, 255, 255, 1);
+}
+
+#footer .branch-box .call {
+  margin-top: 4.6rem;
+  display: flex;
+  align-items: center;
+}
+
+#footer .branch-box .call .ico {
+  width: 2rem;
+  height: 2rem;
+
+  background: url(../img/foot-branch-ico.svg) no-repeat 0 0 / contain;
+}
+
+#footer .branch-box .call .num {
+  font-size: 2.5rem;
+  font-weight: 700;
+
+  margin-left: 1.3rem;
+}
+
+#footer .footer-in {
+  width: calc(100% - 9rem);
+
+  /* 최대 크기를 정해줘야 오른쪽 퀵메뉴에 넘치지 않는다.  */
+  max-width: 85%;
+  margin: 0 auto;
+}
+
+#footer .footer-in .foot-top {
+  margin-top: 4.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 2rem;
+}
+
+#footer .footer-in .foot-top .num-box {
+  font-size: 1.4rem;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+}
+
+#footer .footer-in .foot-top .num-box .num {
+  margin-left: 0.8rem;
+  font-weight: 500;
+
+  font-size: 1.5rem;
+}
+
+#footer .footer-in .foot-top .foot-logo {
+  width: 18rem;
+  height: auto;
+}
+
+#footer .footer-in .foot-top .foot-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  max-width: 100%;
+}
+
+#footer .footer-in .foot-bot {
+  position: relative;
+  margin-top: 4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#footer .footer-in .foot-bot:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: calc(100% + 9rem);
+  height: 1px;
+  background-color: rgba(99, 99, 99, 0.2);
+}
+
+#footer .footer-in .foot-bot .legal-list {
+  padding: 4.2rem 0 3.2rem 0;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: flex-start;
+}
+
+#footer .footer-in .foot-bot .legal-list li {
+  position: relative;
+}
+
+#footer .footer-in .foot-bot .legal-list li:before {
+  content: "";
+  display: block;
+
+  position: absolute;
+  left: 0%;
+  bottom: 0;
+
+  width: 0%;
+  height: 1px;
+
+  background-color: rgba(99, 99, 99, 0.8);
+  transition: width 0.5s;
+}
+
+#footer .footer-in .foot-bot .legal-list li:hover:before {
+  width: 100%;
+}
+
+#footer .footer-in .foot-bot .legal-list .privacy {
+  font-weight: 700;
+}
+
+#footer .footer-in .foot-bot .legal-list li a {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+#footer .footer-in .foot-bot .util-menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 2rem;
+}
+
+#footer .footer-in .foot-bot .util-menu a {
+  display: flex;
+  align-items: center;
+
+  width: 5.4rem;
+  height: 5.4rem;
+
+  border-radius: 2.7rem;
+
+  background-color: #ebebeb;
+  padding: 1.2rem 1.6rem;
+
+  transition: background-color 0.4s;
+}
+
+#footer .footer-in .foot-bot .util-menu a:hover {
+  background-color: #757575;
+}
+
+#footer .footer-in .foot-bot .util-menu a.youtube-btn .ico {
+  height: 1.6rem;
+  background: url(../img/foot-sns1.svg) no-repeat 0 0 / contain;
+
+  transition: background 0.4s;
+}
+
+#footer .footer-in .foot-bot .util-menu a:hover.youtube-btn .ico {
+  background: url(../img/foot-sns1-hover.svg) no-repeat 0 0 / contain;
+}
+
+#footer .footer-in .foot-bot .util-menu a.blog-btn .ico {
+  background: url(../img/foot-sns2.svg) no-repeat 0 0 / contain;
+
+  transition: background 0.4s;
+}
+
+#footer .footer-in .foot-bot .util-menu a.blog-btn:hover .ico {
+  background: url(../img/foot-sns2-hover.svg) no-repeat 0 0 / contain;
+}
+
+#footer .footer-in .foot-bot .util-menu a.kakao-btn .ico {
+  background: url(../img/foot-sns3.svg) no-repeat 0 0 / contain;
+
+  transition: background 0.4s;
+}
+
+#footer .footer-in .foot-bot .util-menu a.kakao-btn:hover .ico {
+  background: url(../img/foot-sns3-hover.svg) no-repeat 0 0 / contain;
+}
+
+#footer .footer-in .foot-bot .util-menu a.sns-clip .ico {
+  background: url(../img/foot-sns4.svg) no-repeat 0 0 / contain;
+
+  transition: background 0.4s;
+}
+
+#footer .footer-in .foot-bot .util-menu a.sns-clip:hover .ico {
+  background: url(../img/foot-sns4-hover.svg) no-repeat 0 0 / contain;
+}
+
+#footer .footer-in .foot-bot .util-menu a .ico {
+  width: 2.2rem;
+  height: 2rem;
+}
+
+#footer .footer-in .foot-bot .util-menu a .ico img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#footer .copyright {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: rgba(99, 99, 99, 0.5);
+}
+
+/* footer - end */
+
+/* 넓이 제한해주는 영역 */
+.section-inner {
+  position: relative;
+  /* max-width에 165.3rem을 주지 않고, width에 주고, max-width에 100%를 준 이유는 width는 기본적으로 폭 넓이를 165.3rem 최대로 갖는다는 의미인데, 넓은 화면에서 레이아웃이 무한히 늘어나는 게 아니라, 최대 디자인 폭이 165.3rem을 유지하도록 만든 것이다. */
+  /* max-width는 반응형에 대응하기 위해서 명령을 준 것인데, 만약 width만 165.3rem만 준다면, 화면이 좁아졌을 때도 width는 165.3rem을 고집한다. -> 그러면 스크롤이 생기고, 화면 밖으로 벗어나게 된다. */
+  /* max-width:100%를 추가하면 화면이 width의 크기보다 넓을 때는 그대로의 넓이를 유지하고, 화면이 width보다 작아졌을때는 화면 폭에 맞춰 100%로 줄어든다. -> 유동적으로 넓이를 변화하는 구조를 갖게 되는 것이다. */
+  width: 165.3rem;
+  max-width: 100%;
+  margin: 0 auto;
+
+  /* padding을 주는 이유는 잘 모르겠지만. 양끝까지 딱 붙게 하지 않게 하기 위해서라고 한다. 모바일에서는 글자나 이미지가 화면 끝에 딱 붙으면 답답해 보이는 느낌을 주기 때문에 기본적인 가이드로 패딩을 주는 경우가 있다고 한다. */
+  padding: 0 2rem;
+}
