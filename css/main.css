@@ -1,0 +1,130 @@
+@charset 'utf-8';
+
+/* header CSS */
+#header {
+  width: 100%;
+  height: 100%;
+  background-color: #55f;
+  position: relative;
+}
+
+#header:before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background-color: #000;
+}
+
+#header .header-wrap {
+  width: 100%;
+  max-width: 154rem;
+  height: 10rem;
+  background-color: #5f5;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#header .header-wrap .logo-box {
+  width: 10.6rem;
+  height: 2rem;
+}
+
+#header .header-wrap .logo-box .logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url(../img/c.png) no-repeat 0 0 / contain;
+}
+
+#header .header-wrap .gnb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 100%;
+  gap: 15rem;
+}
+
+#header .header-wrap .gnb #nav {
+}
+
+#header .header-wrap .gnb #nav ul {
+  display: flex;
+  align-items: center;
+
+  /* 전체 부모에게 크기 */
+  height: 10rem;
+}
+
+#header .header-wrap .gnb #nav ul > li {
+  /* 패딩보다 크기로 줌 */
+  width: 100%;
+  height: 100%;
+  min-width: 16.6rem;
+
+  text-align: center;
+  color: #fff;
+
+  display: flex;
+}
+
+#header .header-wrap .gnb #nav ul > .brand-menu {
+  color: #c30d23;
+}
+
+#header .header-wrap .gnb #nav ul > li > a {
+  width: 100%;
+  height: 100%;
+  font-size: 1.6rem;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#header .header-wrap .gnb .util-menu {
+  display: flex;
+  align-items: center;
+}
+
+#header .header-wrap .gnb .util-menu .lang-btn-wrap {
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+#header .header-wrap .gnb .util-menu .lang-btn-wrap .lang-btn {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+#header .header-wrap .util-menu .lang-btn-wrap .lang-arrow-white {
+  opacity: 1;
+}
+
+#header .header-wrap .util-menu .lang-btn-wrap .lang-arrow-black {
+  opacity: 0;
+}
+
+#header .header-wrap .util-menu .lang-btn-wrap figure {
+  position: relative;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-left: 1.2rem;
+}
+
+#header .header-wrap .util-menu .lang-btn-wrap figure img {
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+}

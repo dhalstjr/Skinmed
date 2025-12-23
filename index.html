@@ -4,8 +4,83 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>스킨메드-클론코딩</title>
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
-    <h1>깃 적용</h1>
+    <div class="main-wrap">
+      <!-- header : start  -->
+      <header id="header">
+        <!-- 헤더안의 크기  -->
+        <div class="header-wrap">
+          <!-- 여기 구조는 로고로만 따로 설정 - 이유가 있는지 확인-->
+          <h1 class="logo-box">
+            <a href="#" class="logo"><i class="hidden">스킨메드 로고</i></a>
+          </h1>
+
+          <!-- 네비게이션 바와 유틸메뉴 -->
+          <div class="gnb">
+            <nav id="nav">
+              <ul class="menu">
+                <li>
+                  <a href="#">ABOUT US</a>
+                  <!-- li안에 서브메뉴 -->
+                </li>
+
+                <li>
+                  <a href="#">COSMETIC</a>
+                </li>
+
+                <li>
+                  <a href="#">임상시험센터</a>
+                </li>
+
+                <li class="brand-menu">
+                  <a href="#">R&D</a>
+                </li>
+
+                <li>
+                  <a href="#">NEWS</a>
+                </li>
+
+                <li>
+                  <a href="#">CONTACT</a>
+                </li>
+              </ul>
+            </nav>
+
+            <div class="util-menu">
+              <div class="lang-btn-wrap">
+                <a href="#" class="lang-btn">KOR</a>
+                <!-- 아이콘 - 흰색 -->
+                <figure>
+                  <img
+                    src="./img/lang-arrow-white.png"
+                    alt=""
+                    class="lang-arrow-white"
+                  />
+                  <!-- 아이콘 - 검은색 -->
+                  <img
+                    src="./img/lang-arrow-black.png"
+                    alt=""
+                    class="lang-arrow-black"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- header : end -->
+
+      <!-- main : start  -->
+      <main id="main"></main>
+      <!-- main : end  -->
+
+      <!-- footer : start  -->
+      <footer id="footer"></footer>
+      <!-- footer : end  -->
+    </div>
   </body>
 </html>
