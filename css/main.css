@@ -26,10 +26,13 @@
 
 #header .header-wrap {
   width: 100%;
-  max-width: 154rem;
-  height: 10rem;
+  /* 여기서 최대 크기를 주는 대신 calc를 사용해서 양 쪽에 패딩을 줌. */
+  /*   max-width: 154rem; */
+
+  /* calc 사용 / 근데 왜 padding의 calc를 사용해서 적용했을까? */
+  padding: 0 calc((100% - 1720px) / 2);
+  height: 100%;
   background-color: #5f5;
-  margin: 0 auto;
 
   display: flex;
   align-items: center;
@@ -48,43 +51,42 @@
   background: url(../img/c.png) no-repeat 0 0 / contain;
 }
 
-#header .header-wrap .gnb {
+#header .header-wrap > div {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-
   height: 100%;
   gap: 15rem;
 }
 
-#header .header-wrap .gnb #nav {
+#header .header-wrap > .gnb > #nav {
 }
 
-#header .header-wrap .gnb #nav ul {
+#header .header-wrap > .gnb > #nav > ul {
   display: flex;
   align-items: center;
 
   /* 전체 부모에게 크기 */
-  height: 10rem;
+  height: 100%;
 }
 
-#header .header-wrap .gnb #nav ul > li {
+#header .header-wrap > .gnb > #nav ul > li {
   /* 패딩보다 크기로 줌 */
-  width: 100%;
   height: 100%;
-  min-width: 16.6rem;
+  width: 16.6rem;
 
-  text-align: center;
   color: #fff;
+  text-align: center;
 
   display: flex;
+
+  /* 서브메뉴들의 부모가 될 수 있게. */
+  position: relative;
 }
 
-#header .header-wrap .gnb #nav ul > .brand-menu {
+#header .header-wrap > .gnb > #nav > ul > .brand-menu {
   color: #c30d23;
 }
 
-#header .header-wrap .gnb #nav ul > li > a {
+#header .header-wrap > .gnb > #nav > ul > li > a {
   width: 100%;
   height: 100%;
   font-size: 1.6rem;
@@ -93,17 +95,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  position: relative;
 }
 
-#header .header-wrap .gnb .util-menu {
+#header .header-wrap > .gnb > .util-menu {
   display: flex;
   align-items: center;
+  gap: 15rem;
 }
 
-#header .header-wrap .gnb .util-menu .lang-btn-wrap {
+#header .header-wrap > .gnb > .util-menu .lang-btn-wrap {
   color: #fff;
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  /* 버튼의 클릭 크기(영역) 주기 */
+  width: 8rem;
+  gap: 6px;
 }
 
 #header .header-wrap .gnb .util-menu .lang-btn-wrap .lang-btn {
@@ -123,13 +133,17 @@
   position: relative;
   width: 1.2rem;
   height: 1.2rem;
-  margin-left: 1.2rem;
 }
 
 #header .header-wrap .util-menu .lang-btn-wrap figure img {
   position: absolute;
   width: 100%;
   object-fit: cover;
+}
+
+#header .header-wrap > .header-nav-mo {
+  display: none;
+  position: fixed;
 }
 
 /* section - visual CSS */
@@ -164,7 +178,34 @@
   /* 배경 스케일 효과 */
 }
 
-.visual-sect .visual.wrap1 .text-area {
+.visual-sect .visual.wrap2 {
+  width: 100%;
+  height: 100%;
+  background: url(../img/main-sec-bg2.png) no-repeat 0 0 / cover;
+  transition: transform 0.4s;
+
+  /* 배경 스케일 효과 */
+}
+
+.visual-sect .visual.wrap3 {
+  width: 100%;
+  height: 100%;
+  background: url(../img/main-sec-bg3.png) no-repeat 0 0 / cover;
+  transition: transform 0.4s;
+
+  /* 배경 스케일 효과 */
+}
+
+.visual-sect .visual.wrap4 {
+  width: 100%;
+  height: 100%;
+  background: url(../img/main-sec-bg4.png) no-repeat 0 0 / cover;
+  transition: transform 0.4s;
+
+  /* 배경 스케일 효과 */
+}
+
+.visual-sect .visual .text-area {
   position: absolute;
   bottom: 35%;
   left: 10%;
@@ -172,18 +213,18 @@
   color: #fff;
 }
 
-.visual-sect .visual.wrap1 .text-area .main-tit {
+.visual-sect .visual .text-area .main-tit {
   font-size: 8.4rem;
   font-weight: 600;
 
   line-height: 1.1;
 }
 
-.visual-sect .visual.wrap1 .text-area .main-tit .red-dot {
+.visual-sect .visual .text-area .main-tit .red-dot {
   color: #c30d23;
 }
 
-.visual-sect .visual.wrap1 .text-area .main-txt {
+.visual-sect .visual .text-area .main-txt {
   font-size: 2.2rem;
   font-weight: 600;
   letter-spacing: -0.24px;
