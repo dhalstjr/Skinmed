@@ -306,4 +306,122 @@
   height: 2px;
   background-color: #fff;
 }
+
+/* swiper-slide 첫번째 화면 뺴고 안보이게  */
+.visual-sect .swiper .swiper-wrapper .swiper-slide + .swiper-slide {
+  display: none;
+}
 /* section - visual CSS */
+
+/* section2 - start */
+/* 최대 넓이 1520px */
+.main-sec2 {
+  position: relative;
+}
+
+.main-sec2 .sec2-text-area {
+  position: relative;
+  width: 100%;
+  background-color: #55f;
+
+  padding: 12.5rem 0;
+  word-break: keep-all;
+  overflow: hidden;
+}
+
+.main-sec2 .sec2-text-area .text-ani {
+  font-size: 25rem;
+  font-weight: 400;
+  color: #000;
+}
+
+.main-sec2 .sec2-text-area .text-ani > .img-ani {
+  display: inline-block;
+  width: 42rem;
+  height: 24rem;
+
+  background: url(../img/text-ani-img.png) no-repeat 0 0 / cover;
+}
+
+.main-sec2 .sec2-text-area .text-ani .red-dot {
+  display: inline-block;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: #c30d23;
+}
+
+.sec-inner {
+  width: 100%;
+  max-width: 152rem;
+  margin: 0 auto;
+}
+
+.main-sec2 .slogan-area {
+  padding: 6.5rem 0;
+  border-top: 1px solid #000;
+}
+
+.slogan-area .top-slogan {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.slogan-area .top-slogan .icon-arrow {
+  width: 5.4rem;
+  height: 5.4rem;
+  background: url(../img/sec2-arrow.png) 0 0 / cover;
+  /* 반복적으로 사용하기 위해서는 infinite를 사용. */
+  animation: moveArrow 2s infinite ease-in-out;
+  transition: transform 0.4s;
+}
+
+/* 화살표 애니메이션 */
+@keyframes moveArrow {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.slogan-area .top-slogan .left-text-area {
+  display: flex;
+  align-items: flex-start;
+}
+
+.slogan-area .top-slogan .left-text-area .title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #c30d23;
+  line-height: 1.4;
+  margin-right: 8.4rem;
+}
+
+.slogan-area .top-slogan .left-text-area .text {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #000;
+  line-height: 1.4;
+}
+
+.slogan-area .bottom-slogan {
+  margin-top: 15rem;
+}
+
+.slogan-area .bottom-slogan .slogan {
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: #000;
+  line-height: 1.5;
+}
+/* section2 - end */
+
+/* section3 - start */
+
+/* section3 - end */
