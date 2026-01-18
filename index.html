@@ -191,15 +191,63 @@
         <section class="main-sec2">
           <!-- 텍스트 흐르는 애니메이션 구역 -->
           <div class="sec2-text-area">
-            <p class="text-ani">Cure beyond the 
-              <!-- 이미지 -->
-              <span  class="img-ani"><i class="hidden">빨간 세포 이미지</i></span>
-              Care
-              <span class="red-dot"><i class="hidden">빨간색 점</i></span>
-            </p>
+            <!-- 텍스트에 flex를 준 게 아니라, 텍스트를 컨테이너로 감싸서 텍스트 컨테이너로 설정 후 텍스트를 일자를 만들고, 여러 개에 텍스트 컨테이너를 만들어 그 컨테이너 부모에게 flex를 사용. -->
+            <!-- 텍스트 무한으로 흐르는 구조를 만들기 위해서 3개의 컨테이너를 구조로 만들어 사용하는 것이 고정이다. -->
+            <!-- 1. 보이는 영역 / 2. 움직이는 트랙 영역 / 3. 콘텐츠 묶음 영역 -->
+            <!-- 아래에 구조를 사용하기 보다는 3개의 구조를 만들어 사용하는 것이 좋다. -->
+
+            <!-- 내가 만든 구조는 안정성이 떨어짐. -->
+<!--             <div class="text-slide-wrap">
+              <div class="text-ani">
+                <p>Cure beyond the</p>
+                <span  class="img-ani"><i class="hidden">빨간 세포 이미지</i></span>
+                <p>Care</p>
+                <span class="red-dot"><i class="hidden">빨간색 점</i></span>
+              </div>
+              
+              <div class="text-ani">
+                <p>Cure beyond the</p>
+                <span  class="img-ani"><i class="hidden">빨간 세포 이미지</i></span>
+                <p>Care</p>
+                <span class="red-dot"><i class="hidden">빨간색 점</i></span>
+              </div>
+              
+              <div class="text-ani">
+                <p>Cure beyond the</p>
+                <span  class="img-ani"><i class="hidden">빨간 세포 이미지</i></span>
+                <p>Care</p>
+                <span class="red-dot"><i class="hidden">빨간색 점</i></span>
+              </div>
+            </div>
+          </div> -->
+          
+          <div class="text-slide-wrap">
+            <div class="text-slide-wrap-box">
+                <div class="text-ani">
+                  <p>Cure beyond the</p>
+                  <span  class="img-ani"><i class="hidden">빨간 세포 이미지</i></span>
+                  <p>Care</p>
+                  <span class="red-dot"><i class="hidden">빨간색 점</i></span>
+                </div>
+            
+                <div class="text-ani">
+                  <p>Cure beyond the</p>
+                  <span  class="img-ani"><i class="hidden">빨간 세포 이미지</i></span>
+                  <p>Care</p>
+                  <span class="red-dot"><i class="hidden">빨간색 점</i></span>
+                </div>
+            
+                <div class="text-ani">
+                  <p>Cure beyond the</p>
+                  <span  class="img-ani"><i class="hidden">빨간 세포 이미지</i></span>
+                  <p>Care</p>
+                  <span class="red-dot"><i class="hidden">빨간색 점</i></span>
+                </div>
+              </div>
+          </div>
           </div>
 
-          <!-- section2 :start -->
+          <!-- section2 :start --> 
           <!-- 텍스트 아래 구역 -->
            <div class="sec-inner">
             <div class="slogan-area">
@@ -214,7 +262,7 @@
                   </p>
                 </div>
               </div>
-              
+
               <div class="bottom-slogan">
                 <h2 class="slogan">
                   스킨메드는<br>
@@ -234,12 +282,16 @@
             <div class="tab-area">
               <div class="right-area">
                 <div class="tab-text-area">
-                  <h2 class="tab-title">폭넓은 연구 분야</h2>
-                  <p class="tab-txt">
-                    화장품 개발에 그치지 않고 의약품 개발 연구까지<br>
-                    혁신적인 연구와 폭넓은 기술 개발을 전개합니다.
-                  </p>
+                  <span class="title-num">01</span>
+                  <div class="tab-text-cont">
+                    <h2 class="tab-title">폭넓은 연구 분야</h2>
+                    <p class="tab-txt">
+                      화장품 개발에 그치지 않고 의약품 개발 연구까지<br>
+                      혁신적인 연구와 폭넓은 기술 개발을 전개합니다.
+                    </p>
+                  </div>
                 </div>
+
                 <div class="tab-menu">
                   <ul class="tab-list">
                     <li>
@@ -290,17 +342,17 @@
               <div class="left-area">
                 <div class="tab-img-area">
                   <div class="img-list">
-                    <div class="tab-img1">
+                    <div class="slogan-list-img tab-img1">
                       <figure>
                         <img src="" alt=""></div>
                       </figure>
 
-                    <div class="tab-img2">
+                    <div class="slogan-list-img tab-img2">
                       <figure>
                         <img src="" alt=""></div>
                       </figure>
 
-                    <div class="tab-img3">
+                    <div class="slogan-list-img tab-img3">
                       <figure>
                         <img src="" alt=""></div>
                       </figure>

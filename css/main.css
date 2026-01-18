@@ -317,22 +317,49 @@
 /* 최대 넓이 1520px */
 .main-sec2 {
   position: relative;
+  padding: 12.5rem 0;
 }
 
+/* 텍스트가 보여지는 부분에서는 height를 고정으로 사용해야한다. */
+/* height를 auto/100% 자동적으로 계산으로 사용하는 것으로 한다면 글자가 틀어질 수 있다. (텍스트가 잘리는 현상.) */
 .main-sec2 .sec2-text-area {
   position: relative;
   width: 100%;
-  background-color: #55f;
+  height: 45rem;
+  /*   background-color: #55f; */
 
-  padding: 12.5rem 0;
   word-break: keep-all;
   overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  padding-bottom: 11.2rem;
 }
 
 .main-sec2 .sec2-text-area .text-ani {
+  display: flex;
+}
+
+.main-sec2 .sec2-text-area .text-slide-wrap {
+  display: flex;
+  width: 120%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.main-sec2 .sec2-text-area .text-slide-wrap-box {
+  display: flex;
+  flex-shrink: 0;
+
+  transition: transform 0.4s;
+  animation: rollingText 200s infinite linear;
+}
+
+.main-sec2 .sec2-text-area .text-ani p {
   font-size: 25rem;
   font-weight: 400;
   color: #000;
+  word-break: keep-all;
 }
 
 .main-sec2 .sec2-text-area .text-ani > .img-ani {
@@ -349,6 +376,22 @@
   height: 2.5rem;
   border-radius: 50%;
   background-color: #c30d23;
+}
+
+/* 텍스트 애니메이션 */
+@keyframes rollingText {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  50.01% {
+    transform: translateX(100%);
+  }
+  1000% {
+    transform: translateX(0);
+  }
 }
 
 .sec-inner {
@@ -424,4 +467,85 @@
 
 /* section3 - start */
 
+.main-sec3 .tab-area {
+  display: flex;
+  justify-content: space-between;
+  padding: 9rem 0;
+}
+
+.main-sec3 .tab-area .right-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-sec3 .tab-area .right-area .tab-text-area {
+  position: relative;
+}
+
+.tab-text-area .title-num {
+  font-size: 18rem;
+  font-weight: 400;
+  color: #dfdfdf;
+}
+
+.tab-text-area .tab-text-cont {
+}
+
+.tab-text-area .tab-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.tab-text-area .tab-txt {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #000;
+  line-height: 1.7;
+  margin-top: 5.2rem;
+}
+
+.tab-area .tab-menu {
+}
+
+.tab-area .tab-menu .tab-list {
+}
+
+.tab-area .tab-menu .tab-list > li {
+}
+
+.tab-area .tab-menu .tab-list > li > a {
+}
+
+.tab-area .tab-menu .tab-list > li > a .tab-top {
+}
+
+.tab-area .tab-menu .tab-list > li > a .tab-top h2 {
+}
+
+.tab-area .tab-menu .tab-list > li > a .tab-bottom p {
+}
+
+.main-sec3 .tab-area .left-area {
+}
+
+.main-sec3 .tab-area .left-area .tab-img-area {
+}
+
+.main-sec3 .tab-area .left-area .tab-img-area .img-list {
+}
+
+.tab-area .left-area .tab-img-area .img-list .slogan-list-img.tab-img1 {
+  width: 60rem;
+  height: 69rem;
+
+  background-color: #ff5;
+}
+
+.img-list .slogan-list-img figure {
+}
+
+.img-list .slogan-list-img figure img {
+}
 /* section3 - end */
