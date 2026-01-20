@@ -122,6 +122,11 @@ section {
   background-color: #f3f3f3;
 }
 
+.main-sec4 {
+  height: 100%;
+  background-color: #fff;
+}
+
 /* 일단 여러가지 보이면 디자인하기 어려우니 보이는 디자인 하나만 설정 */
 .visual.wrap2,
 .visual.wrap3,
