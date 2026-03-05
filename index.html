@@ -560,13 +560,34 @@
                 </a>
               </div>
 
-              <figure class="main-sec6-img-box1"></figure>
-              <figure class="main-sec6-none-box"></figure>
-              <figure class="main-sec6-img-box2"></figure>
-              <figure class="main-sec6-img-box3"></figure>
-              <figure class="main-sec6-none-box"></figure>
-              <figure class="main-sec6-img-box4"></figure>
-              <figure class="main-sec6-img-box5"></figure>
+              <figure class="main-sec6-img-box1">
+                <img src="" alt="">
+              </figure>
+
+              <figure class="main-sec6-none-box">
+                <i class="hidden">그리드 채우기용1</i>
+              </figure>
+
+              <figure class="main-sec6-img-box2">
+                <img src="" alt="">
+              </figure>
+
+              <figure class="main-sec6-img-box3">
+                <img src="" alt="">
+              </figure>
+
+              <figure class="main-sec6-none-box">
+                <i class="hidden">그리드 채우기용2</i>
+              </figure>
+              
+              <figure class="main-sec6-img-box4">
+                <img src="" alt="">
+              </figure>
+
+              <figure class="main-sec6-img-box5">
+                <img src="" alt="">
+              </figure>
+
             </div>
           </div>
         </section>
@@ -575,7 +596,109 @@
       <!-- main : end  -->
 
       <!-- footer : start  -->
-      <footer id="footer"></footer>
+      <!-- 홈페이지에서 footer를 js로 넣음. -->
+      <!-- footer / header를 html로 각자 만들고, js로 불러들이는 방식의 이점 -->
+      <!-- 1. 유지보수의 편리함(가장 큰 장점) : 페이지가 많은 경우, 모든 페이지에 header와 footer가 하드코딩 되어있을 경우, 모든 파일을 열어서 수정 필요.  -->
+      <footer id="footer">
+        <div class="sec-inner">
+          <div class="tit-box">
+            <h2>스킨메드는 더 나은 삶을 위해<br>
+              끊임없이 연구하고 개발합니다.
+            </h2>
+          </div>
+
+          <div class="info-con">
+            <div class="head-office">
+              <p>
+                <strong>본사</strong>
+                <span>대전광역시 유성구 문지로 272-36</span>
+              </p>
+
+              <p>
+                <strong>TEL.</strong>
+                <span>1544-9159</span>
+              </p>
+
+              <p>
+                <strong>FAX.</strong>
+                <span>042-537-5642</span>
+              </p>
+            </div>
+
+            <div class="lab">
+              <p>
+                <strong>연구소</strong>
+                <span>대전광역시 유성구 테크노 2로 291, 2층 스킨메드 R&D Center</span>
+              </p>
+
+              <p>
+                <strong>TEL.</strong>
+                <span>042-867-8123</span>
+              </p>
+
+              <p>
+                <strong>FAX.</strong>
+                <span>042-867-8124</span>
+              </p>
+
+            </div>
+
+            <div class="seoul">
+              <p>
+                <strong>서울</strong>
+                <span>서울특별시 강남구 테헤란로 22길 15 A&C 빌딩 3층</span>
+              </p>
+
+              <p>
+                <strong>TEL.</strong>
+                <span>1544-9159</span>
+              </p>
+
+              <p>
+                <strong>FAX.</strong>
+                <span>070-8233-5641</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="foot-area">
+            <!-- 패밀리 사이트 버튼 구조 -> select를 사용 -->
+            <!-- select 태그(드롭다운 메뉴)를 사용하는 이유는 제한된 공간 활용과 사용자 경험(UX) 최적화 때문이다. 또한 브라우저의 기본 스타일 제한을 벗어나 디자인적 일관성 유지 -->
+            <div class="foot-family-select">
+            <div class="footer-SelectWrap">
+              <div class="hiddenSelectBox">
+                <!-- hidden을 사용하면 브라우저에서 안보이게 됨 -> hidden은 거의 모든 HTML태그에 다 사용할 수 있는 "전역 속성(Global Attribute)"-->
+                <!-- select와 option은 전달하는 데이터라고 보면 된다. -->
+                <select hidden> 
+                  <!-- 1. option태그는 단독으로 사용 X -> 반드시 선택 목록을 만드는 특정 부모 태그안에서만 사용 가능 -->
+                  <!-- 2. option태그 사용하지 않으면 웹사이트가 제대로 기능 X -> 서버로 진짜 데이터를 보내기 위해서(중요!) -->
+                  <option value="스킨메드 공식 쇼핑몰">스킨메드 공식 쇼핑몰</option>
+                  <option value="스킨메드 임상시험센터">스킨메드 임상시험센터</option>
+                </select>
+
+                <!-- 실제로 보이는 패밀리사이트 메뉴 박스 -->
+                <!-- 이 코드들은 JS로 넣었을 가능성이 있음. (카멜 케이스 방식의 클래스 이름) -> JavaScript 컴포넌트화 -->
+                <div class="footer-CustomSelectBox">
+                  <div class="footer-CustomSelectView">FAMILY SITE</div>
+                  <ul class="footer-CustomSelectBtns">
+                    <li><a class="footer-MoreSelectBtn" href="#" type="a" target="_blank">스킨메드 공식 쇼핑몰</a></li>
+                    <li><a class="footer-MoreSelectBtn" href="#" type="a" target="_blank">스킨메드 임상시험센터</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+            <div class="foot-copyright-wrap">
+              <p class="copyright">Copyright © 2024 SKINMED All rights reserved.</p>
+              <div class="foot-logo">
+                <figure><img src="./img/c.png" alt="홈페이지 로고"></figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer> 
       <!-- footer : end  -->
     </div>
   </body>
